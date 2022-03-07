@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
+using AirTickets.Core.Encrypt;
 
 namespace AirTickets.ViewModel
 {
@@ -27,9 +28,30 @@ namespace AirTickets.ViewModel
         }
 
         #region Commands
-        private void AuthenticateUser(object obj)
+        private async void AuthenticateUser(object obj)
         {
+            string pass = _password;
+            Password = "";
             IsLoading = Visibility.Visible;
+
+            //get data from db
+
+            if (true /* there is responce check */)
+            {
+                if (Encrypt.VerifyPassword(pass, "hash", "b3J0am5ob2lkZmhub2Rmbmht"))
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный логин или пароль", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Сервер сейчас недоступен, попробойте позже", "200", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            IsLoading = Visibility.Collapsed;
         }
         #endregion
 

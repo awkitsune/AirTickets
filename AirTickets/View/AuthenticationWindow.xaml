@@ -61,7 +61,6 @@
             <PasswordBox Visibility="{Binding PasswordMaskVisibility, Mode=OneWay}"
                          PasswordChanged="PasswordBox_PasswordChanged"
                          x:Name="passBox" />
-
         </StackPanel>
         <Grid Grid.Row="3"
               Margin="8">
