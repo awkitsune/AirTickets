@@ -19,7 +19,6 @@ namespace AirTickets.ViewModel
         public ICommand LoginClick
         {
             get;
-            private set;
         }
 
         public AuthenticationWindowViewModel()
@@ -37,10 +36,7 @@ namespace AirTickets.ViewModel
         #region Properties
         public string Login
         {
-            get
-            {
-                return _login;
-            }
+            get => _login;
             set
             {
                 _login = value;
@@ -55,10 +51,7 @@ namespace AirTickets.ViewModel
         }
         public string Password
         {
-            private get
-            {
-                return _password;
-            }
+            private get => _password;
             set
             {
                 _password = value;
@@ -67,10 +60,7 @@ namespace AirTickets.ViewModel
         }
         public Visibility IsLoading
         {
-            get
-            {
-                return _isLoading ? Visibility.Visible : Visibility.Hidden;
-            }
+            get => _isLoading ? Visibility.Visible : Visibility.Hidden;
             set
             {
                 _isLoading = value == Visibility.Visible ? true : false;
@@ -78,20 +68,9 @@ namespace AirTickets.ViewModel
                 OnPropertyChanged(nameof(IsLoginEnabled));
             }
         }
-        public bool IsLoginEnabled
-        {
-            get
-            {
-                return !_isLoading;
-            }
-        }
-        public Visibility EmailWrongMessageVisibility
-        {
-            get
-            {
-                return _isEmailValid ? Visibility.Collapsed : Visibility.Visible;
-            }
-        }
+        public bool IsLoginEnabled => !_isLoading;
+        public Visibility EmailWrongMessageVisibility => _isEmailValid ? Visibility.Collapsed : Visibility.Visible;
+
         #endregion
     }
 }
