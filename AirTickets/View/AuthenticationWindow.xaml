@@ -43,9 +43,17 @@
                        FontSize="14" />
             <TextBox Text="{Binding Login}">
                 <TextBox.InputBindings>
-                    <KeyBinding Command="{Binding Login}" Key="Return"/>
+                    <KeyBinding Key="Return"
+                                Command="{Binding LoginClick, Mode=OneWay}" />
                 </TextBox.InputBindings>
             </TextBox>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 4"
+                        Visibility="{Binding EmailWrongMessageVisibility, Mode=OneWay}">
+                <ui:SymbolIcon Symbol="Important" Foreground="Red"/>
+                <TextBlock Text="Неверный формат адреса элекронной почты"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
 
             <TextBlock Text="Пароль"
                        Margin="0 4"

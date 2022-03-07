@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 
@@ -12,6 +13,8 @@ namespace AirTickets.ViewModel
         private string _login = "";
         private string _password = "";
         private bool _isLoading = false;
+
+        private bool _isEmailValid = true;
 
         public ICommand LoginClick
         {
@@ -41,6 +44,12 @@ namespace AirTickets.ViewModel
             set
             {
                 _login = value;
+                _isEmailValid = Regex.IsMatch(
+                    Login,
+                    @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
+                    RegexOptions.IgnoreCase
+                    );
+                OnPropertyChanged(nameof(EmailWrongMessageVisibility));
                 OnPropertyChanged(nameof(Login));
             }
         }
@@ -71,7 +80,17 @@ namespace AirTickets.ViewModel
         }
         public bool IsLoginEnabled
         {
-            get { return !_isLoading; }
+            get
+            {
+                return !_isLoading;
+            }
+        }
+        public Visibility EmailWrongMessageVisibility
+        {
+            get
+            {
+                return _isEmailValid ? Visibility.Collapsed : Visibility.Visible;
+            }
         }
         #endregion
     }
