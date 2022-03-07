@@ -1,0 +1,78 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirTickets.View"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:ViewModel="clr-namespace:AirTickets.ViewModel"
+        x:Class="AirTickets.View.AuthenticationWindow"
+        mc:Ignorable="d"
+        Title="AirTickets"
+        Height="450"
+        Width="350"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:ThemeManager.IsThemeAware="True"
+        ui:TitleBar.ExtendViewIntoTitleBar="True">
+    <Window.DataContext>
+        <ViewModel:AuthenticationWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ui:ProgressBar IsIndeterminate="True"
+                        VerticalAlignment="Top"
+                        Visibility="{Binding IsLoading}" />
+        
+        <TextBlock Grid.Row="1"
+                   Margin="8"
+                   FontWeight="Light"
+                   FontSize="24"
+                   xml:space="preserve"><Run Text="Добро пожаловать в &#xD;&#xA;" /><Span FontSize="36"><Run Text="AirTickets" /></Span><Run Text="&#xD;&#xA;        " /></TextBlock>
+
+        <StackPanel Grid.Row="2"
+                    Margin="8"
+                    IsEnabled="{Binding IsLoginEnabled, Mode=OneWay}">
+            <TextBlock Text="Email"
+                       Margin="0 4"
+                       FontSize="14" />
+            <TextBox Text="{Binding Login}">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding Login}" Key="Return"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <TextBlock Text="Пароль"
+                       Margin="0 4"
+                       FontSize="14" />
+            <PasswordBox Visibility="{Binding PasswordMaskVisibility, Mode=OneWay}"
+                         PasswordChanged="PasswordBox_PasswordChanged"
+                         x:Name="passBox" />
+
+        </StackPanel>
+        <Grid Grid.Row="3"
+              Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Margin="0 0 4 0"
+                    Height="32"
+                    Content="Регистрация"
+                    HorizontalAlignment="Stretch" />
+            <Button Grid.Column="1"
+                    Margin="4 0 0 0"
+                    Height="32"
+                    Content="Вход"
+                    HorizontalAlignment="Stretch"
+                    Command="{Binding LoginClick, Mode=OneWay}" />
+        </Grid>
+    </Grid>
+
+</Window>
