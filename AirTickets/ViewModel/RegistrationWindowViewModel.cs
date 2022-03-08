@@ -1,4 +1,5 @@
 ﻿using AirTickets.Core.Encrypt;
+using AirTickets.Core.Validate;
 using AirTickets.View;
 using System;
 using System.Collections.Generic;
@@ -84,11 +85,7 @@ namespace AirTickets.ViewModel
             set
             {
                 _login = value;
-                _isEmailValid = Regex.IsMatch(
-                    Login,
-                    @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
-                    RegexOptions.IgnoreCase
-                    );
+                _isEmailValid = Validate.Email(Login);
                 OnPropertyChanged(nameof(EmailWrongMessageVisibility));
                 OnPropertyChanged(nameof(Login));
             }
