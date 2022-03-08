@@ -1,11 +1,11 @@
-﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window x:Class="AirTickets.View.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirTickets.View"
         xmlns:ui="http://schemas.modernwpf.com/2019"
         xmlns:ViewModel="clr-namespace:AirTickets.ViewModel"
-        x:Class="AirTickets.View.AuthenticationWindow"
         mc:Ignorable="d"
         Title="AirTickets"
         Height="450"
@@ -15,9 +15,10 @@
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:ThemeManager.IsThemeAware="True"
         ui:TitleBar.ExtendViewIntoTitleBar="True"
-        Visibility="{Binding WindowVisibility, Mode=OneWay}">
+        ui:TitleBar.IsBackButtonVisible="True"
+        ui:TitleBar.BackButtonCommand="{Binding BackClick}" >
     <Window.DataContext>
-        <ViewModel:AuthenticationWindowViewModel />
+        <ViewModel:RegistrationWindowViewModel />
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -29,7 +30,7 @@
 
         <ui:ProgressBar IsIndeterminate="True"
                         VerticalAlignment="Top"
-                        Visibility="{Binding IsLoading}" 
+                        Visibility="{Binding IsLoading}"
                         CornerRadius="0"/>
 
 
@@ -38,7 +39,7 @@
                    FontWeight="Light"
                    FontSize="24"
                    xml:space="preserve"
-                   VerticalAlignment="Center">Добро пожаловать в &#xD;&#xA;<Span FontSize="36">AirTickets</Span></TextBlock>
+                   VerticalAlignment="Center">Зарегистрируйтесь в &#xD;&#xA;<Span FontSize="36">AirTickets</Span></TextBlock>
 
         <StackPanel Grid.Row="2"
                     Margin="8"
@@ -64,8 +65,13 @@
             <TextBlock Text="Пароль"
                        Margin="0 4"
                        FontSize="14" />
-            <PasswordBox PasswordChanged="PasswordBox_PasswordChanged"
+            <PasswordBox PasswordChanged="passBox_PasswordChanged"
                          x:Name="passBox" />
+            <TextBlock Text="Повторите пароль"
+                       Margin="0 4"
+                       FontSize="14" />
+            <PasswordBox PasswordChanged="passRepBox_PasswordChanged"
+                         x:Name="passRepBox" />
         </StackPanel>
         <Grid Grid.Row="3"
               Margin="8">
@@ -73,19 +79,11 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
+            <Button Grid.Column="1"
                     Margin="0 0 4 0"
                     Height="32"
                     Content="Регистрация"
-                    HorizontalAlignment="Stretch"
-                    Command="{Binding RegisterClick, Mode=OneWay}" />
-            <Button Grid.Column="1"
-                    Margin="4 0 0 0"
-                    Height="32"
-                    Content="Вход"
-                    HorizontalAlignment="Stretch"
-                    Command="{Binding LoginClick, Mode=OneWay}" />
+                    HorizontalAlignment="Stretch" />
         </Grid>
     </Grid>
-
 </Window>

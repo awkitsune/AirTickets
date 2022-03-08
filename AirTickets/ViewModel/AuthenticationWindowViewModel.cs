@@ -6,14 +6,19 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using AirTickets.Core.Encrypt;
+using AirTickets.Core.Validate;
+using AirTickets.View;
 
 namespace AirTickets.ViewModel
 {
     internal class AuthenticationWindowViewModel : BaseViewModel
     {
+        private AuthenticationWindow? window = null;
+
         private string _login = "";
         private string _password = "";
         private bool _isLoading = false;
+        private Visibility _windowVisibility = Visibility.Visible;
 
         private bool _isEmailValid = true;
 
@@ -21,36 +26,73 @@ namespace AirTickets.ViewModel
         {
             get;
         }
+        public ICommand RegisterClick
+        {
+            get;
+        }
 
         public AuthenticationWindowViewModel()
         {
             LoginClick = new DelegateCommand(AuthenticateUser);
+            RegisterClick = new DelegateCommand(RegisterUser);
+
+            foreach (var _window in Application.Current.Windows)
+            {
+                if (_window as Window is AuthenticationWindow)
+                {
+                    window = _window as AuthenticationWindow;
+                }
+            }
         }
 
         #region Commands
+        private void RegisterUser(object obj)
+        {
+            window?.Hide();
+
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.ShowDialog();
+
+            window?.Show();
+
+        }
         private async void AuthenticateUser(object obj)
         {
             string pass = _password;
-            Password = "";
             IsLoading = Visibility.Visible;
 
-            //get data from db
-
-            if (true /* there is responce check */)
+            if (string.IsNullOrEmpty(pass) || string.IsNullOrEmpty(Login))
             {
-                if (Encrypt.VerifyPassword(pass, "hash", "b3J0am5ob2lkZmhub2Rmbmht"))
-                {
-
-                }
-                else
-                {
-                    MessageBox.Show("Неправильный логин или пароль", "", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                ThemedMessageBox.Show("Логин или пароль не должны быть пустыми", "Ошибка данных");
             }
             else
             {
-                MessageBox.Show("Сервер сейчас недоступен, попробойте позже", "200", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (!Validate.Email(_login))
+                {
+                    ThemedMessageBox.Show("Неверный адрес электронной почты", "Ошибка данных");
+                }
+                else
+                {
+                    //get data from api
+
+                    if (true /* there is responce check */)
+                    {
+                        if (Encrypt.VerifyPassword(pass, "hash", "b3J0am5ob2lkZmhub2Rmbmht"))
+                        {
+
+                        }
+                        else
+                        {
+                            ThemedMessageBox.Show("Неправильный логин или пароль");
+                        }
+                    }
+                    else
+                    {
+                        ThemedMessageBox.Show("Сервер сейчас недоступен, попробойте позже", "200");
+                    }
+                }
             }
+
             IsLoading = Visibility.Collapsed;
         }
         #endregion
@@ -62,11 +104,7 @@ namespace AirTickets.ViewModel
             set
             {
                 _login = value;
-                _isEmailValid = Regex.IsMatch(
-                    Login,
-                    @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
-                    RegexOptions.IgnoreCase
-                    );
+                _isEmailValid = Validate.Email(_login);
                 OnPropertyChanged(nameof(EmailWrongMessageVisibility));
                 OnPropertyChanged(nameof(Login));
             }
@@ -88,6 +126,15 @@ namespace AirTickets.ViewModel
                 _isLoading = value == Visibility.Visible ? true : false;
                 OnPropertyChanged(nameof(IsLoading));
                 OnPropertyChanged(nameof(IsLoginEnabled));
+            }
+        }
+        public Visibility WindowVisibility
+        {
+            get => _windowVisibility;
+            set
+            {
+                _windowVisibility = value;
+                OnPropertyChanged(nameof(WindowVisibility));
             }
         }
         public bool IsLoginEnabled => !_isLoading;
