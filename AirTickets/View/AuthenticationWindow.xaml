@@ -55,8 +55,6 @@
             <StackPanel Orientation="Horizontal"
                         Margin="0 4"
                         Visibility="{Binding EmailWrongMessageVisibility, Mode=OneWay}">
-                <ui:SymbolIcon Symbol="Important"
-                               Foreground="Red" />
                 <TextBlock Text="Неверный формат адреса элекронной почты"
                            VerticalAlignment="Center" />
             </StackPanel>
