@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Images\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Model\" />
   </ItemGroup>
 
