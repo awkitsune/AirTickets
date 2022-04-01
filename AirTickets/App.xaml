@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AirTickets"
              xmlns:ui="http://schemas.modernwpf.com/2019"
-             StartupUri="/View/MainWindow.xaml">
+             StartupUri="/View/AuthenticationWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -33,13 +33,18 @@
                         Visibility="{Binding IsLoading}"
                         CornerRadius="0"/>
 
-
-        <TextBlock Grid.Row="1"
-                   Margin="8 16"
-                   FontWeight="Light"
-                   FontSize="24"
-                   xml:space="preserve"
-                   VerticalAlignment="Center">Зарегистрируйтесь в &#xD;&#xA;<Span FontSize="36">AirTickets</Span></TextBlock>
+		<StackPanel Grid.Row="1"
+					Margin="8 16">
+			<TextBlock 
+					   FontWeight="Light"
+					   FontSize="24"
+					   VerticalAlignment="Center">Зарегистрируйтесь в</TextBlock>
+			<Image Source="pack://application:,,,/Assets/Images/logo.png" 
+				   Stretch="None"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Center"
+				   Margin="-4 0 0 0"/>
+		</StackPanel>
 
         <StackPanel Grid.Row="2"
                     Margin="8"
