@@ -4,11 +4,51 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AirTickets.View.Pages"
+      xmlns:items="clr-namespace:AirTickets.Core.DemoClasses"
+	  xmlns:ui="http://schemas.modernwpf.com/2019"
 	  mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage">
 
     <Grid>
-		
-	</Grid>
+        <ui:GridView>
+            <ui:GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="300"
+					      Height="220">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Source="pack://application:,,,/Assets/Images/sampleNews.jpg" 
+                               Stretch="UniformToFill" 
+                               Grid.RowSpan="2"/>
+                        
+                        <Border Grid.Row="1">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource SystemAccentColor}"/>
+                            </Border.Background>
+                        </Border>
+                        
+                        <StackPanel Grid.Row="1"
+                                    Margin="8 4">
+                            <TextBlock Text="{Binding Title}" 
+                                       TextWrapping="WrapWithOverflow" 
+                                       FontSize="18"
+                                       FontWeight="Light"/>
+                            <TextBlock Text="{Binding Description}" 
+                                       TextWrapping="WrapWithOverflow"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ui:GridView.ItemTemplate>
+            <ui:GridView.Items>
+                <items:NewsItem Title="Техническое обслуживание серверов" Description="19.04.2022 c 19.00 до 20.30 приложение может работать медленнее"/>
+                <items:NewsItem Title="Летать вместе выгоднее!" Description="Покупка билетов сразу на несколько человек - теперь со скидкой"/>
+                <items:NewsItem Title="Отдыхайте дома" Description="Теперь полёты по стране дешевле"/>
+                <items:NewsItem Title="Мы запустились" Description="Наше официальное бесплатное приложение для Windows 10 запущено"/>
+            </ui:GridView.Items>
+        </ui:GridView>
+    </Grid>
 </Page>

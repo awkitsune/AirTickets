@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AirTickets.Core.DemoClasses;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,5 +26,40 @@ namespace AirTickets.View.Pages
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void ComboBox_Selected(object sender, RoutedEventArgs e)
+        {
+			var destinations = new ObservableCollection<DestinationItem>();
+
+            if (((ComboBox)sender).SelectedIndex == 0)
+            {
+				destinations.Add(new DestinationItem()
+				{
+					Name = "Тестовое направление 1",
+					Address = "Майкоп, Россия",
+					Description = "Некоторое описание нашего места назначения"
+				});
+				destinations.Add(new DestinationItem()
+				{
+					Name = "Тестовое направление 2",
+					Address = "Майкоп, Россия",
+					Description = "Некоторое описание нашего места назначения"
+				});
+				destinations.Add(new DestinationItem()
+				{
+					Name = "Тестовое направление 3",
+					Address = "Майкоп, Россия",
+					Description = "Некоторое описание нашего места назначения"
+				});
+				destinations.Add(new DestinationItem()
+				{
+					Name = "Тестовое направление 4",
+					Address = "Майкоп, Россия",
+					Description = "Некоторое описание нашего места назначения"
+				});
+			}
+
+			destinationsGridView.ItemsSource = destinations;
+		}
+    }
 }

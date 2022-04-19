@@ -14,8 +14,8 @@
 		WindowStartupLocation="CenterScreen"
 		ui:WindowHelper.UseModernWindowStyle="True"
 		ui:ThemeManager.IsThemeAware="True"
-		ui:ThemeManager.RequestedTheme="Dark"
 		ui:TitleBar.ExtendViewIntoTitleBar="True">
+
 	<Grid>
 		<ui:NavigationView IsBackButtonVisible="Collapsed"
 						   PaneDisplayMode="Auto"
@@ -31,7 +31,7 @@
 			</ui:NavigationView.PaneHeader>
 			<ui:NavigationView.MenuItems>
 				<ui:NavigationViewItem Tag="account"
-									   Content="UserName">
+									   Content="Аккаунт">
 					<ui:NavigationViewItem.Icon>
 						<ui:FontIcon Glyph="&#xE77B;" />
 					</ui:NavigationViewItem.Icon>

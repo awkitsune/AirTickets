@@ -75,11 +75,16 @@ namespace AirTickets.ViewModel
                 {
                     //get data from api
 
-                    if (true /* there is responce check */)
+                    if (_login == "vladimir.kosickij@gmail.com")
                     {
-                        if (Encrypt.VerifyPassword(pass, "hash", "b3J0am5ob2lkZmhub2Rmbmht"))
+                        if (_password == "12345678")
                         {
+                            MainWindow mw = new MainWindow();
+                            WindowVisibility = Visibility.Hidden;
+                            mw.ShowDialog();
+                            WindowVisibility = Visibility.Visible;
 
+                            GC.Collect();
                         }
                         else
                         {
