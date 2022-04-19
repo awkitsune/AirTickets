@@ -52,12 +52,14 @@
 						<ui:FontIcon Glyph="&#xE709;" />
 					</ui:NavigationViewItem.Icon>
 				</ui:NavigationViewItem>
+                <!--
 				<ui:NavigationViewItem Content="Члены семьи"
 									   Tag="family">
 					<ui:NavigationViewItem.Icon>
 						<ui:FontIcon Glyph="&#xEBDA;" />
 					</ui:NavigationViewItem.Icon>
 				</ui:NavigationViewItem>
+                -->
 				<ui:NavigationViewItem Content="Мои билеты"
 									   Tag="my_tickets">
 					<ui:NavigationViewItem.Icon>

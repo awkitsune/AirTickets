@@ -61,5 +61,10 @@ namespace AirTickets.View.Pages
 
 			destinationsGridView.ItemsSource = destinations;
 		}
+
+        private void destinationsGridView_ItemClick(object sender, ModernWpf.Controls.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

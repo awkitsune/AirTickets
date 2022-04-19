@@ -45,9 +45,9 @@
             </ui:GridView.ItemTemplate>
             <ui:GridView.Items>
                 <items:NewsItem Title="Техническое обслуживание серверов" Description="19.04.2022 c 19.00 до 20.30 приложение может работать медленнее"/>
-                <items:NewsItem Title="Летать вместе выгоднее!" Description="Покупка билетов сразу на несколько человек - теперь со скидкой"/>
+                <items:NewsItem Title="Летать вместе выгоднее!" Description="Скоро станет доступна покупка билетов для нескольких человек"/>
                 <items:NewsItem Title="Отдыхайте дома" Description="Теперь полёты по стране дешевле"/>
-                <items:NewsItem Title="Мы запустились" Description="Наше официальное бесплатное приложение для Windows 10 запущено"/>
+                <items:NewsItem Title="Мы запустились" Description="Наше официальное приложение для Windows 10 запущено. Пока функционал небольшой, но мы стараемся"/>
             </ui:GridView.Items>
         </ui:GridView>
     </Grid>

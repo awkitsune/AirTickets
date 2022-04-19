@@ -13,8 +13,6 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -26,8 +24,10 @@
             <TextBlock Text="Страна"
                        Margin="0 4"
                        FontSize="16"/>
-            <ComboBox HorizontalAlignment="Stretch"
-                      SelectionChanged="ComboBox_Selected">
+            <ComboBox HorizontalAlignment="Left"
+                      SelectionChanged="ComboBox_Selected"
+                      MinWidth="250"
+                      MaxWidth="300">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Value}"/>
@@ -40,8 +40,8 @@
         </StackPanel>
         
         <ui:GridView Grid.Row="1"
-                     Grid.ColumnSpan="3"
-                     Name="destinationsGridView">
+                     Name="destinationsGridView"
+                     ItemClick="destinationsGridView_ItemClick">
             <ui:GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid Width="300"
