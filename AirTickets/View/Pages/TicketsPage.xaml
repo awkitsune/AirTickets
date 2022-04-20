@@ -15,7 +15,7 @@
         <StackPanel Margin="8 8 0 0">
             <TextBlock Text="Запланированные рейсы"
                        FontSize="18" />
-            <ui:ListView>
+            <ui:ListView IsSelectionEnabled="False">
                 <ui:ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Width="Auto"
