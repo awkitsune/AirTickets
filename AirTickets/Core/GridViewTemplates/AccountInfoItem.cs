@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirTickets.Core.DemoClasses
+namespace AirTickets.Core.GridViewTemplates
 {
     public class AccountInfoItem
     {

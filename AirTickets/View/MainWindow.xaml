@@ -78,7 +78,7 @@
 			</ui:NavigationView.MenuItems>
 
 			<ui:Frame x:Name="ContentFrame"
-					  Margin="16">
+					  Margin="16 16 0 0">
 				
 				<ui:Frame.ContentTransitions>
 					<ui:TransitionCollection>
