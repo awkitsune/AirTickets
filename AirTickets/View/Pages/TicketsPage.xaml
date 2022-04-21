@@ -48,13 +48,13 @@
                     </DataTemplate>
                 </ui:ListView.ItemTemplate>
                 <ui:ListView.Items>
-                    <items:TicketInfoItem Destination="Москва, Россия"
-                                          Date="22.04.2022"
+                    <items:TicketInfoItem Destination="Кисловодск, Россия"
+                                          Date="30.04.2022"
                                           Price="15000 ₽" />
-                    <items:TicketInfoItem Destination="Ростов-на-Дону, Россия"
-                                          Date="09.05.2022"
+                    <items:TicketInfoItem Destination="Абакан, Россия"
+                                          Date="12.05.2022"
                                           Price="20000 ₽" />
-                    <items:TicketInfoItem Destination="Арзамас, Россия"
+                    <items:TicketInfoItem Destination="Калининград, Россия"
                                           Date="16.06.2022"
                                           Price="18000 ₽" />
                 </ui:ListView.Items>
@@ -95,7 +95,7 @@
                     </DataTemplate>
                 </ui:ListView.ItemTemplate>
                 <ui:ListView.Items>
-                    <items:TicketInfoItem Destination="Москва, Россия"
+                    <items:TicketInfoItem Destination="Новосибирск, Россия"
                                           Date="16.04.2022"
                                           Price="15000 ₽" />
                 </ui:ListView.Items>
