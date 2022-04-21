@@ -80,11 +80,9 @@ namespace AirTickets.ViewModel
                         if (_password == "12345678")
                         {
                             MainWindow mw = new MainWindow();
-                            WindowVisibility = Visibility.Hidden;
+                            window?.Hide();
                             mw.ShowDialog();
-                            WindowVisibility = Visibility.Visible;
-
-                            GC.Collect();
+                            window?.Show();
                         }
                         else
                         {
